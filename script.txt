@@ -1,6 +1,6 @@
-create database bancopoo;
+create database bancoPOO;
 
-use banco_viagens;
+use bancoPOO;
 
 create table cliente(
 idCliente int not null,
@@ -19,14 +19,11 @@ primary key(idCidade)
 
 create table passagens(
 idPassagens int not null,
-idCliente int not null,
-idCidade int not null,
 quantidadeDePassagens int,
 precoPassagens double,
 dataDacompra date,
 horaDacompra time,
-primary key(idPassagens),
-foreign key(idCliente) references cliente(idCliente),
-foreign key(idCidade) references cidade(idCidade)
+primary key(idPassagens)
 );
 
+--OBS: Use o heidisql e colóquio auto incremento banco de dados
