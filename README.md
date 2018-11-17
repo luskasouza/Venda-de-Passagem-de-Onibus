@@ -1,5 +1,5 @@
 # Projeto Final- Venda de Passagem de Onibus
-+ Versão 5.5
++ Versão 6.0
 + Banco de Dados 
 + POO
 + Java Swing
