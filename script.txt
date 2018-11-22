@@ -17,6 +17,16 @@ cidadeDestino varchar(64),
 primary key(idCidade)
 );
 
+create table usuario(
+id_Usuario int not null,
+email varchar(35) not null,
+password varchar(15) not null,
+primary key(id_Usuario)
+);
+
+
+
+
 create table passagens(
 idPassagens int not null,
 quantidadeDePassagens int,
