@@ -46,6 +46,8 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(845, 490));
+        setPreferredSize(new java.awt.Dimension(800, 490));
+        setResizable(false);
         getContentPane().setLayout(null);
 
         jButtonOK.setBackground(new java.awt.Color(0, 155, 6));
@@ -76,7 +78,9 @@ public class Login extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1);
@@ -121,7 +125,7 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lukas Souza\\Desktop\\Projeto---Passagem-de-Onibus\\Modelo_de_Projeto\\src\\img\\simple-wood-widescreen.jpg")); // NOI18N
         jLabel4.setText(" ");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 0, 831, 455);
+        jLabel4.setBounds(0, 0, 850, 470);
 
         jLabel8.setText("jLabel8");
         getContentPane().add(jLabel8);
