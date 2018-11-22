@@ -65,7 +65,7 @@ public class Login extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 3, 47));
         jPanel1.setBorder(new javax.swing.border.MatteBorder(null));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lukas Souza\\Desktop\\Projeto---Passagem-de-Onibus\\Modelo_de_Projeto\\src\\img\\1822508809-1.png")); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\20161timinf022\\Desktop\\Projeto---Passagem-de-Onibus\\Modelo_de_Projeto\\src\\img\\1822508809-1.png")); // NOI18N
         jLabel6.setText("jLabel6");
         jLabel6.setMaximumSize(new java.awt.Dimension(200, 200));
         jLabel6.setMinimumSize(new java.awt.Dimension(200, 200));
@@ -122,7 +122,7 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(jTpassword);
         jTpassword.setBounds(470, 260, 300, 30);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lukas Souza\\Desktop\\Projeto---Passagem-de-Onibus\\Modelo_de_Projeto\\src\\img\\simple-wood-widescreen.jpg")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\20161timinf022\\Desktop\\Projeto---Passagem-de-Onibus\\Modelo_de_Projeto\\src\\img\\simple-wood-widescreen.jpg")); // NOI18N
         jLabel4.setText(" ");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(0, 0, 850, 470);
