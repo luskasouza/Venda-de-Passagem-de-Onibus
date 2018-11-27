@@ -1,0 +1,13 @@
+create database projeto;
+
+use projeto;
+
+create table cliente(
+idCliente int not null,
+nome varchar(64) not null,
+cpf varchar(16) not null,
+rg varchar(10) not null,
+cidadeAtual varchar(64),
+cidadeDestino varchar(64),
+primary key(idCliente)
+);
