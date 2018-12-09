@@ -38,9 +38,8 @@ public class Login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jTemail = new javax.swing.JTextField();
-        jTpassword = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jLabel7 = new javax.swing.JLabel();
 
         jLabel2.setText("jLabel2");
 
@@ -65,7 +64,7 @@ public class Login extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 3, 47));
         jPanel1.setBorder(new javax.swing.border.MatteBorder(null));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\20161timinf022\\Desktop\\Projeto---Passagem-de-Onibus\\Modelo_de_Projeto\\src\\img\\1822508809-1.png")); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lukas Souza\\Desktop\\Projeto---Passagem-de-Onibus\\Modelo_de_Projeto\\src\\img\\1822508809-1.png")); // NOI18N
         jLabel6.setText("jLabel6");
         jLabel6.setMaximumSize(new java.awt.Dimension(200, 200));
         jLabel6.setMinimumSize(new java.awt.Dimension(200, 200));
@@ -86,17 +85,20 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 260, 460);
 
+        jLabel1.setBackground(java.awt.Color.orange);
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Password");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(340, 250, 130, 60);
 
+        jLabel3.setBackground(java.awt.Color.orange);
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         jLabel3.setForeground(java.awt.Color.yellow);
         jLabel3.setText("Login");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(500, 10, 140, 80);
 
+        jLabel5.setBackground(java.awt.Color.orange);
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel5.setText("E-mail");
         getContentPane().add(jLabel5);
@@ -112,24 +114,14 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(jTemail);
         jTemail.setBounds(470, 200, 300, 30);
 
-        jTpassword.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jTpassword.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jTpassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTpasswordActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTpassword);
-        jTpassword.setBounds(470, 260, 300, 30);
+        jPasswordField1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        getContentPane().add(jPasswordField1);
+        jPasswordField1.setBounds(470, 270, 300, 30);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\20161timinf022\\Desktop\\Projeto---Passagem-de-Onibus\\Modelo_de_Projeto\\src\\img\\simple-wood-widescreen.jpg")); // NOI18N
-        jLabel4.setText(" ");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 0, 850, 470);
-
-        jLabel8.setText("jLabel8");
-        getContentPane().add(jLabel8);
-        jLabel8.setBounds(310, 80, 34, 14);
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/simple-wood-widescreen.jpg"))); // NOI18N
+        jLabel7.setText("jLabel7");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(220, -20, 640, 510);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -138,17 +130,13 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         UsuarioDAO usuariodao = new UsuarioDAO();
         
-        if(usuariodao.checkLugin(jTemail.getText(), jTpassword.getText())){
+        if(usuariodao.checkLugin(jTemail.getText(), jPasswordField1.getText())){
             new Menu().setVisible(true);
             this.dispose();
         }else{
             JOptionPane.showMessageDialog(null, "Password incorreto !!!");
         }
     }//GEN-LAST:event_jButtonOKActionPerformed
-
-    private void jTpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTpasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTpasswordActionPerformed
 
     private void jTemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTemailActionPerformed
         // TODO add your handling code here:
@@ -194,12 +182,11 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTemail;
-    private javax.swing.JTextField jTpassword;
     // End of variables declaration//GEN-END:variables
 }

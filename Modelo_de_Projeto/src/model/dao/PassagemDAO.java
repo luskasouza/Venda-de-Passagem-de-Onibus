@@ -2,6 +2,7 @@ package model.dao;
 
 import connection.ConnectionFactory;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,22 +11,22 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import model.bean.Cliente;
+import model.bean.Passagem;
 
 /**
  *
  * @author Lukas Souza
  */
-public class ClienteDAO {
+public class PassagemDAO {
     //Adisonar no Banco de Dados
-    public void create(Cliente cliente) {
+    public void create(Passagem passagem) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         try {
-            stmt = con.prepareStatement("INSERT INTO cliente (nome,cpf,rg)VALUES(?,?,?)");
-            stmt.setString(1, cliente.getNome());
-            stmt.setString(2, cliente.getCpf());
-            stmt.setString(3, cliente.getRg());
+            stmt = con.prepareStatement("INSERT INTO passagem (quantidade,preco,data) VALUES (?,?,?)");
+            stmt.setInt(1, passagem.getQuantidade());
+            stmt.setDouble(2, passagem.getPreco());
+            stmt.setDate(3, (Date) passagem.getData());
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
         } catch (SQLException ex) {
@@ -36,39 +37,39 @@ public class ClienteDAO {
         
     }
     //Lista dados do banco na tabela 
-    public List<Cliente> read() {
+    public List<Passagem> read() {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        List<Cliente> clientes = new ArrayList<>();
+        List<Passagem> passagens = new ArrayList<>();
         try {
-            stmt = con.prepareStatement("SELECT * FROM cliente");
+            stmt = con.prepareStatement("SELECT * FROM passagem");
             rs = stmt.executeQuery();
             while (rs.next()) {
-                Cliente cliente = new Cliente();
-                cliente.setIdCliente(rs.getInt("idCliente"));
-                cliente.setNome(rs.getString("nome"));
-                cliente.setCpf(rs.getString("cpf"));
-                cliente.setRg(rs.getString("rg"));
-                clientes.add(cliente);
+                Passagem passagem = new Passagem();
+                passagem.setIdPassagens(rs.getInt("idPassagens"));
+                passagem.setQuantidade(rs.getInt("quantidade"));
+                passagem.setPreco(rs.getDouble("preco"));
+                passagem.setData(rs.getDate("data"));
+                passagens.add(passagem);
             }
         } catch (SQLException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             ConnectionFactory.closeConnection(con, stmt, rs);
         }
-        return clientes;
+        return passagens;
     }
     //Atualizar dados no banco
-    public void update(Cliente cliente) {
+    public void update(Passagem passagem) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         try {
-            stmt = con.prepareStatement("UPDATE cliente SET nome = ? ,cpf = ?,rg = ? WHERE idCliente = ?");
-            stmt.setString(1, cliente.getNome());
-            stmt.setString(2, cliente.getCpf());
-            stmt.setString(3, cliente.getRg());
-            stmt.setInt(4, cliente.getIdCliente());
+            stmt = con.prepareStatement("UPDATE passagem SET quantidade = ? ,preco = ?,data = ? WHERE idPassagens = ?");
+            stmt.setInt(1, passagem.getQuantidade());
+            stmt.setDouble(2, passagem.getPreco());
+            stmt.setDate(3, (Date) passagem.getData());
+            stmt.setInt(4, passagem.getIdPassagens());
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "Atualizado com sucesso!");
         } catch (SQLException ex) {
@@ -79,12 +80,12 @@ public class ClienteDAO {
 
     }
     //Deletar do banco de dados
-    public void delete(Cliente cliente) {
+    public void delete(Passagem passagem) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         try {
-            stmt = con.prepareStatement("DELETE FROM cliente WHERE idCliente = ?");
-            stmt.setInt(1, cliente.getIdCliente());
+            stmt = con.prepareStatement("DELETE FROM passagem WHERE idPassagens = ?");
+            stmt.setInt(1, passagem.getIdPassagens());
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "Excluido com sucesso!");
         } catch (SQLException ex) {
