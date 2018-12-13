@@ -5,12 +5,18 @@
  */
 package New;
 
-
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import model.bean.Cliente;
+import model.bean.Passagem;
 import model.dao.ClienteDAO;
+import model.dao.PassagemDAO;
 
 /**
  *
@@ -117,6 +123,8 @@ public class VerDadosCadastrados extends javax.swing.JFrame {
         jButtonAtualizar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabelDataViagem = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabelValor = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -215,6 +223,8 @@ public class VerDadosCadastrados extends javax.swing.JFrame {
 
         jLabelDataViagem.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 
+        jLabel5.setText("Valor:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -263,18 +273,33 @@ public class VerDadosCadastrados extends javax.swing.JFrame {
                                     .addComponent(jLabel16)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jLabelCidadeAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(530, 530, 530)
-                        .addComponent(jLabelCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(530, 530, 530)
+                                .addComponent(jLabelCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelValor, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(245, 245, 245)))))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabelNome, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabelNome, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabelValor, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(jLabelCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -368,6 +393,26 @@ public class VerDadosCadastrados extends javax.swing.JFrame {
         
         readJTable();
         
+        Passagem passagem = new Passagem();
+        PassagemDAO passagemDAO = new PassagemDAO();
+        passagem.setQuantidade(Integer.parseInt(jLabelPQtPassagens.getText()));
+        //passagem.ConverterParaQSL(jLabelDataViagem.getText());
+        //SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate data = LocalDate.parse(jLabelDataViagem.getText(), formatoData);
+        passagem.setData(new Date(data.getYear(),data.getMonth().getValue(),data.getDayOfMonth()));
+        
+        //passagem.setData2(jLabelDataViagem.getText());
+        passagemDAO.create(passagem);
+        
+        jLabelPQtPassagens.setText("");
+        jLabelValor.setText("");
+        
+        
+        
+        readJTable();
+        //passagem.setPreco(Double.parseDouble(jLabelValor.getText()));
+      
         /*
         cliente.setRg(Integer.parseInt(jLabelRg.getText()));
         cliente.setRg(Double.parseDouble(jLabelRg.getText()));
@@ -504,6 +549,7 @@ public class VerDadosCadastrados extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabelCPF;
     private javax.swing.JLabel jLabelCidade;
     private javax.swing.JLabel jLabelCidadeAtual;
@@ -512,10 +558,16 @@ public class VerDadosCadastrados extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelNome;
     private javax.swing.JLabel jLabelPQtPassagens;
     private javax.swing.JLabel jLabelRg;
+    private javax.swing.JLabel jLabelValor;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableTabela;
     // End of variables declaration//GEN-END:variables
+/*
+    private String ConverterParaQS(String text) {
+        return text.substring(6,10)+"-"+text.substring(3,5)+"-"+text.substring(0,2);
 
+}
+*/
  
 }

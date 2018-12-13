@@ -45,7 +45,6 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(845, 490));
-        setPreferredSize(new java.awt.Dimension(800, 490));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -64,7 +63,7 @@ public class Login extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 3, 47));
         jPanel1.setBorder(new javax.swing.border.MatteBorder(null));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Lukas Souza\\Desktop\\Projeto---Passagem-de-Onibus\\Modelo_de_Projeto\\src\\img\\1822508809-1.png")); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/1822508809-1.png"))); // NOI18N
         jLabel6.setText("jLabel6");
         jLabel6.setMaximumSize(new java.awt.Dimension(200, 200));
         jLabel6.setMinimumSize(new java.awt.Dimension(200, 200));

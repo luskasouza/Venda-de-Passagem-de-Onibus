@@ -18,15 +18,16 @@ import model.bean.Passagem;
  * @author Lukas Souza
  */
 public class PassagemDAO {
-    //Adisonar no Banco de Dados
+    //Adicionar no Banco de Dados
     public void create(Passagem passagem) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         try {
-            stmt = con.prepareStatement("INSERT INTO passagem (quantidade,preco,data) VALUES (?,?,?)");
+            stmt = con.prepareStatement("INSERT INTO passagem (quantidade, data) VALUES (?,?)");
             stmt.setInt(1, passagem.getQuantidade());
-            stmt.setDouble(2, passagem.getPreco());
-            stmt.setDate(3, (Date) passagem.getData());
+            //stmt.setDouble(2, passagem.getPreco());
+            //stmt.setString(2, passagem.getData2());
+            stmt.setDate(2, (Date) passagem.getData());
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
         } catch (SQLException ex) {
@@ -50,7 +51,8 @@ public class PassagemDAO {
                 passagem.setIdPassagens(rs.getInt("idPassagens"));
                 passagem.setQuantidade(rs.getInt("quantidade"));
                 passagem.setPreco(rs.getDouble("preco"));
-                passagem.setData(rs.getDate("data"));
+               //passagem.setData2(rs.getString("data"));
+               // passagem.setData(rs.getDate("data"));
                 passagens.add(passagem);
             }
         } catch (SQLException ex) {
@@ -65,11 +67,12 @@ public class PassagemDAO {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         try {
-            stmt = con.prepareStatement("UPDATE passagem SET quantidade = ? ,preco = ?,data = ? WHERE idPassagens = ?");
+            stmt = con.prepareStatement("UPDATE passagem SET quantidade = ?, preco = ? ,data = ? WHERE idPassagens = ?");
             stmt.setInt(1, passagem.getQuantidade());
             stmt.setDouble(2, passagem.getPreco());
-            stmt.setDate(3, (Date) passagem.getData());
-            stmt.setInt(4, passagem.getIdPassagens());
+            
+            //stmt.setDate(2, (Date) passagem.getData());
+            stmt.setInt(3, passagem.getIdPassagens());
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "Atualizado com sucesso!");
         } catch (SQLException ex) {
@@ -94,4 +97,11 @@ public class PassagemDAO {
             ConnectionFactory.closeConnection(con, stmt);
         }
     }
-}
+}/*
+ String dia = passagem.getData2().substring(0,2);
+            String mm = passagem.getData2().substring(3,5);
+            String ano = passagem.getData2().substring(6);
+            String dataParaMysql = ano+"-"+mm+"-"+dia;
+            stmt.setString(2, dataParaMysql);
+
+*/

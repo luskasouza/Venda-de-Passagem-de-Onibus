@@ -2,6 +2,7 @@ package model.bean;
 
 import java.util.Date;
 
+
 /**
  *
  * @author Lukas Souza
@@ -11,6 +12,15 @@ public class Passagem {
     private int quantidade;
     private double preco;
     private Date data;
+
+
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
+    }
 
     public int getIdPassagens() {
         return idPassagens;
@@ -36,13 +46,4 @@ public class Passagem {
         this.preco = preco;
     }
 
-    public Date getData() {
-        return data;
-    }
-
-    public void setData(Date data) {
-        this.data = data;
-    }
-
-  
-}
+ }
