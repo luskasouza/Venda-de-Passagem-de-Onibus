@@ -23,11 +23,10 @@ public class PassagemDAO {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         try {
-            stmt = con.prepareStatement("INSERT INTO passagem (quantidade, data) VALUES (?,?)");
+            stmt = con.prepareStatement("INSERT INTO passagem (quantidade,preco, data) VALUES (?,?,?)");
             stmt.setInt(1, passagem.getQuantidade());
-            //stmt.setDouble(2, passagem.getPreco());
-            //stmt.setString(2, passagem.getData2());
-            stmt.setDate(2, (Date) passagem.getData());
+            stmt.setDouble(2, passagem.getPreco());
+            stmt.setDate(3, (Date) passagem.getData());
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
         } catch (SQLException ex) {

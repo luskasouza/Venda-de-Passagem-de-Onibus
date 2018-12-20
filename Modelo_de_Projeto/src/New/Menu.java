@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import javafx.util.converter.IntegerStringConverter;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 /**
@@ -97,6 +99,9 @@ public class Menu extends javax.swing.JFrame {
         tfRg = new javax.swing.JFormattedTextField();
         jLabel25 = new javax.swing.JLabel();
         tfDataViagem = new javax.swing.JFormattedTextField();
+        jButtonValor = new javax.swing.JButton();
+        TtPreco = new javax.swing.JTextField();
+        jLabelPreco = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 15, 20));
@@ -223,7 +228,7 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(jLabel22)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel28)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addComponent(jLabel27)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel23)
@@ -353,6 +358,19 @@ public class Menu extends javax.swing.JFrame {
         }
         tfDataViagem.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 
+        jButtonValor.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButtonValor.setText("Valor");
+        jButtonValor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonValorActionPerformed(evt);
+            }
+        });
+
+        TtPreco.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+
+        jLabelPreco.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabelPreco.setText("jLabel29");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -392,11 +410,11 @@ public class Menu extends javax.swing.JFrame {
                                     .addComponent(tfNome))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(27, 27, 27)
                 .addComponent(btNao, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btSim, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55))
+                .addGap(50, 50, 50))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel21)
@@ -408,8 +426,17 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(jLabelData, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(114, 114, 114)
-                .addComponent(jLabel20)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(114, 114, 114)
+                        .addComponent(jLabel20))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jButtonValor)
+                        .addGap(18, 18, 18)
+                        .addComponent(TtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52)
+                        .addComponent(jLabelPreco)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -447,15 +474,23 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel25)
                     .addComponent(tfDataViagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonValor)
+                    .addComponent(jLabelPreco))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel19)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel20)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btNao)
-                    .addComponent(btSim, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel20)
+                        .addGap(65, 65, 65))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btNao)
+                            .addComponent(btSim, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -519,8 +554,9 @@ public class Menu extends javax.swing.JFrame {
             janela02.enviarCidadeAtual(this, tfCidadeAtual.getText());
             janela02.enviarDestino(this, tfDestino.getText());
             janela02.enviarQtPassagens(this, tfQuantidadeDePassagem.getText());
+            janela02.enviarValorDaViagem(this, jLabelPreco.getText());
             janela02.enviarDataViagem(this, tfDataViagem.getText());
-            //janela02.enviarCidadeAtual(this, tfQuantidadeDePassagem.getText());
+            
 
         }
     }//GEN-LAST:event_btSimActionPerformed
@@ -532,6 +568,27 @@ public class Menu extends javax.swing.JFrame {
     private void tfDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfDestinoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfDestinoActionPerformed
+
+    private void jButtonValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonValorActionPerformed
+        double resl;
+        try{
+        resl = (Double.parseDouble(TtPreco.getText())) * (Double.parseDouble(tfQuantidadeDePassagem.getText()));
+                jLabelPreco.setText(String.valueOf(resl));
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null,"Erro de Ùsuario!!! "+e);
+        }
+        
+        
+        /*if(tfDestino.getText() == "Parnaína"){
+            int valor;
+            valor = Integer.parseInt(jLabelCal.getText());
+            try{
+            valor = valorParniba;    
+            }catch(Exception ex){
+                JOptionPane.showMessageDialog(null,"Você colocou o valor !!! "+ex);
+            }
+        }*/  
+    }//GEN-LAST:event_jButtonValorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -570,8 +627,10 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField TtPreco;
     private javax.swing.JButton btNao;
     private javax.swing.JButton btSim;
+    private javax.swing.JButton jButtonValor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -601,6 +660,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelData;
+    private javax.swing.JLabel jLabelPreco;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
